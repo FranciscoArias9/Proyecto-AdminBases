@@ -6,7 +6,7 @@ public class LoginRequest {
     private String password;
     private String username;
 
-    // Constructor vacío (necesario si usas frameworks que requieren un constructor por defecto)
+    // Construct vacío (necesario si usas frameworks que requieren un constructor por defecto)
     public LoginRequest() {}
 
     // Constructor con parámetros

@@ -8,35 +8,33 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "rutinas")
 public class Rutina {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_rutina;
-    
+
     @ManyToOne
-    @JoinColumn(name = "cliente", nullable = false)
+    @JoinColumn(name = "cliente", referencedColumnName = "cedula")
     private Cliente cliente;
 
     @ManyToOne
-    @JoinColumn(name = "instructor", nullable = false)
-    private Instructor instructor;
+    @JoinColumn(name = "instructor", referencedColumnName = "cedula")
+    private Empleado instructor;
 
     @ManyToOne
-    @JoinColumn(name = "maquina", nullable = false)
+    @JoinColumn(name = "maquina", referencedColumnName = "id_maquina")
     private Maquina maquina;
 
-    @Temporal(TemporalType.DATE)
     private Date fecha;
-    
     private int horas;
     private String nombre;
 
     // Getters y Setters
-
     public int getId_rutina() {
         return id_rutina;
     }
@@ -53,11 +51,11 @@ public class Rutina {
         this.cliente = cliente;
     }
 
-    public Instructor getInstructor() {
+    public Empleado getInstructor() {
         return instructor;
     }
 
-    public void setInstructor(Instructor instructor) {
+    public void setInstructor(Empleado instructor) {
         this.instructor = instructor;
     }
 

@@ -4,11 +4,16 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "maquinas")
 public class Maquina {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "maquina_seq")
+    @SequenceGenerator(name = "maquina_seq", sequenceName = "MAQUINA_SEQ", allocationSize = 1)
     private int id_maquina;
 
     private String descripcion;
